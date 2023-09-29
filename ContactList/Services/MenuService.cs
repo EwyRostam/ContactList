@@ -30,8 +30,9 @@ internal class MenuService : IMenuService
             Console.WriteLine("3. Visa en specifik kontakt");
             Console.WriteLine("4. Radera en kontakt");
             Console.WriteLine("0. Avsluta");
-            Console.WriteLine("Välj ett av ovanstående alternativ (0-4): ");
+            Console.Write("Välj ett av ovanstående alternativ (0-4): ");
             var option = Console.ReadLine();
+            
 
             switch (option)
             {
@@ -133,12 +134,15 @@ internal class MenuService : IMenuService
         var contact = _contactService.GetSpecific(contact => contact.Email == email);
 
         if (contact != null)
-            Console.WriteLine($"{contact.FirstName} {contact.LastName} <{contact.Email}> {contact.PhoneNumber} {contact.Adress.FullAdress}");
+        {
+            Console.WriteLine();
+            Console.WriteLine($"{contact.FirstName} {contact.LastName} {contact.PhoneNumber} {contact.Adress.FullAdress}");
+        }
 
         else
         {
             Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine($"Kunde inte hitta någon kontakt med epostadressen \"{email}\"");
+            Console.WriteLine($"Kunde inte hitta någon kontakt med e-postadressen \"{email}\"");
             Console.ReadKey();
         }
     }
