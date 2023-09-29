@@ -1,0 +1,17 @@
+C:\Users\ewyro\Nackademin\ContactList\ContactList\bin\Debug\net7.0\ContactList.exe
+C:\Users\ewyro\Nackademin\ContactList\ContactList\bin\Debug\net7.0\ContactList.deps.json
+C:\Users\ewyro\Nackademin\ContactList\ContactList\bin\Debug\net7.0\ContactList.runtimeconfig.json
+C:\Users\ewyro\Nackademin\ContactList\ContactList\bin\Debug\net7.0\ContactList.dll
+C:\Users\ewyro\Nackademin\ContactList\ContactList\bin\Debug\net7.0\ContactList.pdb
+C:\Users\ewyro\Nackademin\ContactList\ContactList\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\ContactList.csproj.AssemblyReference.cache
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\ContactList.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\ContactList.AssemblyInfoInputs.cache
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\ContactList.AssemblyInfo.cs
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\ContactList.csproj.CoreCompileInputs.cache
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\ContactList.csproj.CopyComplete
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\ContactList.dll
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\refint\ContactList.dll
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\ContactList.pdb
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\ContactList.genruntimeconfig.cache
+C:\Users\ewyro\Nackademin\ContactList\ContactList\obj\Debug\net7.0\ref\ContactList.dll

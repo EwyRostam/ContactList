@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KbIF7y9VPWSAVPzS83dF0oL+3gx2+k3R8cmk4eyw/Zqj5C5QYIgDFHR2mj6i5Ng1j5cPBCaSss7rXwiqlBMhhw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ewyro\\Nackademin\\ContactList\\ContactList\\ContactList.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ewyro\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
