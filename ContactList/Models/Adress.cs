@@ -2,7 +2,7 @@
 
 namespace ContactList.Models;
 
-internal class Adress
+public class Adress
 {
     public string? Street { get; set; }
     public string? StreetNumber { get; set; }

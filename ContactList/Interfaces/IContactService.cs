@@ -4,7 +4,7 @@ using ContactList.Models;
 
 namespace ContactList.Interfaces;
 
-internal interface IContactService
+public interface IContactService
 {
     
         public bool CreateContact(Contact contact);

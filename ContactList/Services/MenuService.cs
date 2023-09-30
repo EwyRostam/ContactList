@@ -73,11 +73,13 @@ internal class MenuService : IMenuService
 
         Console.Write("Förnamn: ");
         string firstName = Console.ReadLine()!.Trim().ToLower();
-        contact.FirstName = char.ToUpper(firstName[0]) + firstName.Substring(1);
+        if (firstName.Length > 0)
+            contact.FirstName = char.ToUpper(firstName[0]) + firstName.Substring(1);
 
         Console.Write("Efternamn: ");
         string lastName = Console.ReadLine()!.Trim().ToLower();
-        contact.LastName = char.ToUpper(lastName[0]) + lastName.Substring(1);
+        if (lastName.Length > 0)
+            contact.LastName = char.ToUpper(lastName[0]) + lastName.Substring(1);
 
         Console.Write("E-post: ");
         contact.Email = Console.ReadLine()!.Trim().ToLower();
@@ -102,6 +104,7 @@ internal class MenuService : IMenuService
 
         _contactService.CreateContact(contact);
 
+        Console.Clear();
         Console.WriteLine("-----------------------------------------------");
         Console.WriteLine("Din kontakt har blivit tillagd i kontaktlistan!");
         Console.ReadKey();
@@ -111,16 +114,35 @@ internal class MenuService : IMenuService
 
     public void ListAllMenu()
     {
+        
         Console.Clear();
         Console.WriteLine("Visa alla Kontakter");
         Console.WriteLine("---------------------");
 
-        foreach (var contact in _contactService.GetAll())
+        if (_contactService.GetAll() != null)
         {
-            Console.WriteLine($"{contact.FirstName} {contact.LastName} <{contact.Email}> {contact.PhoneNumber} {contact.Adress.FullAdress}");
-            Console.WriteLine();
+            foreach (var contact in _contactService.GetAll())
+            {
+                Console.WriteLine($"{contact.FirstName} {contact.LastName} <{contact.Email}> {contact.PhoneNumber} {contact.Adress.FullAdress}");
+                Console.WriteLine();
+            }
+            Console.ReadKey();
         }
-        Console.ReadKey();
+        else
+        {
+            Console.WriteLine("The contactlist is empty. There are no contacts to show.");
+            Thread.Sleep(2000);
+            Console.Clear();
+            for (var i = 0; i < 20; i++)
+            {
+                Console.Write("*");
+                Thread.Sleep(125);
+            }
+            Thread.Sleep(250);
+            Console.Clear();
+            MainMenu();
+        }
+        
     }
 
     public void ListSpecificMenu()

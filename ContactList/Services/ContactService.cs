@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace ContactList.Services;
 
-internal class ContactService : IContactService
+public class ContactService : IContactService
 {
     public List<Contact> _contacts = new List<Contact>();
 
@@ -14,11 +14,15 @@ internal class ContactService : IContactService
         {
           try
           {
-            _contacts.Add(contact);
+            if(contact!=null)
+            {
+                _contacts.Add(contact);
 
-          FileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
+                FileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
 
-            return true;
+                return true;
+            }
+           
         }
         catch { }
         return false;
@@ -46,17 +50,22 @@ internal class ContactService : IContactService
     {
         var content = FileService.ReadFromFile();
 
-        if (content != null)
+        if (content != string.Empty)
         {
             //Omvandlar listan från json-format til C#
             _contacts = JsonConvert.DeserializeObject<List<Contact>>(content)!;
-            
-            return _contacts;
+            if (_contacts.Count > 0)
+                return _contacts;
+            else return null!;
         }
+        
         else
         {
+            
             Console.WriteLine("Kunde inte hitta filen. Vill du ha yoghurt istället?");
+            Console.ReadLine();
             return null!;
+            
         }
 
 
@@ -71,68 +80,3 @@ internal class ContactService : IContactService
 
    
 }
-
-//{
-//    public List<Contact> _contacts = new List<Contact>();
-
-//    public void CreateContact(Contact contact)
-//    {
-//        _contacts.Add(new Contact
-//        {
-//            FirstName = contact.FirstName,
-//            LastName = contact.LastName,
-//            Email = contact.Email,
-//            PhoneNumber = contact.PhoneNumber,
-//            Adress = contact.Adress
-//        });
-
-//        FileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
-//    }
-
-//    public void DeleteContact(Contact contact)
-//    {
-//        _contacts.Remove(contact);
-
-//        FileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
-//    }
-
-//    public IEnumerable<Contact> GetAllContacts()
-//    {
-//        try
-//        {
-//            var content = FileService.ReadFromFile();
-
-//            if (content != null)
-//            {
-//                var deserializedContacts = JsonConvert.DeserializeObject<List<Contact>>(content);
-//                if (deserializedContacts != null)
-//                {
-//                    _contacts = deserializedContacts;
-//                    return _contacts;
-//                }
-
-//                else
-//                {
-//                    Console.WriteLine("Kunde inte hitta filen.");
-
-//                }
-
-
-
-//            }
-
-//        } catch (Exception ex) { Console.WriteLine("Något gick fel! Vänligen testa igen."); }
-//        return null!;
-
-//    }
-
-//    //Hämtar ut kontakt om kontakt finns
-//    public Contact GetContact(Func<Contact, bool> expression)
-//    {
-//        var contact = _contacts.FirstOrDefault(expression, null!);
-//        return contact;
-//    }
-
-
-
-//}
