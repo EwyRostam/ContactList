@@ -126,9 +126,9 @@ internal class MenuService : IMenuService
     public void ListSpecificMenu()
     {
         Console.Clear();
-        Console.WriteLine("Sök efter kontakten");
+        Console.WriteLine("Search for the contact");
         Console.WriteLine("---------------------");
-        Console.Write("Ange e-postadress: ");
+        Console.Write("Email: ");
 
         var email = Console.ReadLine()!.Trim().ToLower();
         var contact = _contactService.GetSpecific(contact => contact.Email == email);
@@ -137,12 +137,13 @@ internal class MenuService : IMenuService
         {
             Console.WriteLine();
             Console.WriteLine($"{contact.FirstName} {contact.LastName} {contact.PhoneNumber} {contact.Adress.FullAdress}");
+            Console.ReadLine();
         }
 
         else
         {
             Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine($"Kunde inte hitta någon kontakt med e-postadressen \"{email}\"");
+            Console.WriteLine($"Couldn't find any contact with the email: \"{email}\"");
             Console.ReadKey();
         }
     }
@@ -150,9 +151,9 @@ internal class MenuService : IMenuService
     public void DeleteMenu()
     {
         Console.Clear();
-        Console.WriteLine("Sök efter den kontakt du vill radera");
+        Console.WriteLine("Search for the contact you want to delete");
         Console.WriteLine("------------------------------------");
-        Console.Write("Ange e-postadress: ");
+        Console.Write("Email: ");
 
         var email = Console.ReadLine()!.Trim().ToLower();
         var contact = _contactService.GetSpecific(contact => contact.Email == email);
@@ -162,7 +163,7 @@ internal class MenuService : IMenuService
             Console.WriteLine();
             Console.WriteLine($"{contact.FirstName} {contact.LastName} {contact.PhoneNumber} {contact.Adress.FullAdress}");
             Console.WriteLine("-------------------------------------------------");
-            Console.WriteLine("Tryck på valfri tangent för att radera kontakten");
+            Console.WriteLine("Press any key to delete contact");
             Console.ReadKey();
             _contactService.Delete(contact);
             Console.Clear();
@@ -175,7 +176,7 @@ internal class MenuService : IMenuService
             }
             Thread.Sleep(250);
             Console.Clear();
-            Console.WriteLine($"Kontakten \"{contact.FirstName} {contact.LastName}\"  är nu raderad från kontaktlistan.");
+            Console.WriteLine($"Your contact \"{contact.FirstName} {contact.LastName}\"  has now been deleted from the contactlist.");
             Thread.Sleep(2000);
             Console.Clear();
         }
@@ -184,7 +185,7 @@ internal class MenuService : IMenuService
         else
         {
             Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine($"Kunde inte hitta någon kontakt med epostadressen \"{email}\"");
+            Console.WriteLine($"Couldn't find any contact with the email: \"{email}\"");
             Console.ReadKey();
         }
 
