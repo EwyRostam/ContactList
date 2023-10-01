@@ -31,7 +31,7 @@ public class ContactService : IContactService
 
 
 
-    public void Delete(Contact contact)
+    public bool Delete(Contact contact)
     {
         try
         {
@@ -39,11 +39,10 @@ public class ContactService : IContactService
           _contacts.Remove(contact);
 
             FileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
+            return true;
         }
         catch { }
-
-
-
+        return false;
     }
 
     public IEnumerable<Contact> GetAll()

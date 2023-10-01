@@ -1,4 +1,5 @@
-﻿using ContactList.Services;
+﻿using ContactList.Models;
+using ContactList.Services;
 
 MenuService menuService = new MenuService();
 menuService.MainMenu();
