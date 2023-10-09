@@ -1,5 +1,6 @@
 ﻿
 
+
 using ContactList.Interfaces;
 using ContactList.Models;
 using Newtonsoft.Json;
@@ -14,7 +15,12 @@ public class ContactService : IContactService
         {
           try
           {
-            if(contact!=null)
+            var content = FileService.ReadFromFile();
+
+                //Omvandlar listan från json-format til C#
+                _contacts = JsonConvert.DeserializeObject<List<Contact>>(content)!;
+                
+            if (contact!=null)
             {
                 _contacts.Add(contact);
 
@@ -77,5 +83,9 @@ public class ContactService : IContactService
         return contact;
     }
 
-   
+    public void UpdateContact()
+    {
+        FileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
+
+    }
 }

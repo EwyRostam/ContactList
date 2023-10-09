@@ -15,6 +15,8 @@ public interface IContactService
 
         public Contact GetSpecific(Func<Contact, bool> expression);
 
+    public void UpdateContact();
+
         
 
     
