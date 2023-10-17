@@ -79,6 +79,9 @@ public class ContactService : IContactService
 
     public Contact GetSpecific(Func<Contact, bool> expression)
     {
+        var content = FileService.ReadFromFile();
+        _contacts = JsonConvert.DeserializeObject<List<Contact>>(content)!;
+
         var contact = _contacts.FirstOrDefault(expression, null!);
         return contact;
     }

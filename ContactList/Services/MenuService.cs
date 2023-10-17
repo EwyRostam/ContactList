@@ -174,7 +174,7 @@ internal class MenuService : IMenuService
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine($"Couldn't find any contact with the email: \"{email}\"");
             Console.ReadKey();
-            return null;
+            return null!;
         }
     }
 
@@ -191,54 +191,65 @@ internal class MenuService : IMenuService
                 do
                 {
                     Console.Clear();
-                    Console.WriteLine("1. Uppdatera förnamn");
-                    Console.WriteLine("2. Uppdatera efternamn");
-                    Console.WriteLine("3. Uppdatera email");
-                    Console.WriteLine("4. Uppdatera telefonnummer");
-                    Console.WriteLine("5. Uppdatera adress");
-                    Console.WriteLine("0. Avsluta");
-                    Console.Write("Välj ett av ovanstående alternativ (0-5): ");
+                    Console.WriteLine("1. Update first name");
+                    Console.WriteLine("2. Update last name");
+                    Console.WriteLine("3. Update email");
+                    Console.WriteLine("4. Update phone number");
+                    Console.WriteLine("5. Update adress");
+                    Console.WriteLine("0. Go back");
+                    Console.Write("Choose one of the above options (0-5): ");
                     var option = Console.ReadLine();
+                    Console.Clear();
 
 
                     switch (option)
                     {
                         case "1":
-                            Console.Write("Ange nytt förnamn: ");
+                            Console.Write("Enter new first name: ");
                             string firstName = Console.ReadLine()!.Trim().ToLower();
                             if (firstName.Length > 0)
                                 contact.FirstName = char.ToUpper(firstName[0]) + firstName.Substring(1);
+                            
+                            Console.WriteLine("First name has now been updated!");
                             break;
 
                         case "2":
-                            Console.Write("Ange nytt efternamn: ");
+                            Console.Write("Enter new surname: ");
                             string lastName = Console.ReadLine()!.Trim().ToLower();
                             if (lastName.Length > 0)
                                 contact.FirstName = char.ToUpper(lastName[0]) + lastName.Substring(1);
+                            Console.Clear();
+                            Console.WriteLine("Surname has now been updated!");
                             break;
 
                         case "3":
-                            Console.Write("Ange ny E-post: ");
+                            Console.Write("Enter new email: ");
                             contact.Email = Console.ReadLine()!.Trim().ToLower();
+                            Console.Clear();
+                            Console.WriteLine("The email has now been updated!");
                             break;
 
                         case "4":
-                            Console.Write("Ange nytt telefonnummer: ");
+                            Console.Write("Enter new phone number: ");
                             contact.PhoneNumber = Console.ReadLine()!.Trim();
+                            Console.Clear();
+                            Console.WriteLine("The phone number has now been updated!");
                             break;
 
                         case "5":
                             Console.Clear();
-                            Console.WriteLine("Ny adress");
+                            Console.WriteLine("New adress");
                             Console.WriteLine("-------------");
-                            Console.Write("Gata: ");
+                            Console.Write("Street: ");
                             contact.Adress.Street = Console.ReadLine();
-                            Console.Write("Gatunummer: ");
+                            Console.Write("Street number: ");
                             contact.Adress.StreetNumber = Console.ReadLine();
-                            Console.Write("Stad: ");
+                            Console.Write("City: ");
                             contact.Adress.City = Console.ReadLine();
-                            Console.Write("Postkod: ");
+                            Console.Write("Postal code: ");
                             contact.Adress.PostalCode = Console.ReadLine();
+                            Console.Clear();
+                            Console.WriteLine("The adress has now been updated!");
                             break;
 
                         case "0":

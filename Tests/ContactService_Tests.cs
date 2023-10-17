@@ -39,7 +39,6 @@ namespace Tests
             contact.Adress = adress;
 
 
-
             //Act
             bool result = _contactService.CreateContact(contact);
 
