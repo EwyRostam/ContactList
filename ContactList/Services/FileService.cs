@@ -1,11 +1,15 @@
 ﻿
 
+using ContactList.Interfaces;
+
 namespace ContactList.Services;
 
-internal class FileService
+public class FileService : IFileService
 {
     private static readonly string filePath = @"C:\Users\ewyro\Nackademin\Contactlist\Contacts.json";
-    public static void SaveToFile(string contentAsJson)
+
+  
+    public void SaveToFile(string contentAsJson)
     {
         //Using innebär att lokala variabler raderas när scopet är slut. Och att öppnade filer stängs.
         //StreamWriter "streamar" in innehållet från en sträng till en fil som den skapar om inte filen redan finns
@@ -13,7 +17,7 @@ internal class FileService
         sw.WriteLine(contentAsJson);
     }
 
-    public static string ReadFromFile()
+    public string ReadFromFile()
     {
         if (File.Exists(filePath))
         {

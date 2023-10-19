@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "KbIF7y9VPWSAVPzS83dF0oL+3gx2+k3R8cmk4eyw/Zqj5C5QYIgDFHR2mj6i5Ng1j5cPBCaSss7rXwiqlBMhhw==",
+  "dgSpecHash": "eh1Aa7WnPwo7XNTXPGfDM8Kvm+DTqjsPva/DC0I/Pp6KaLN+6Y+lZyp9SBAwfYKTz4ja0aOPgOr8QnOtsdc2Kg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ewyro\\Nackademin\\ContactList\\ContactList\\ContactList.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ewyro\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\ewyro\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\ewyro\\.nuget\\packages\\moq\\4.20.69\\moq.4.20.69.nupkg.sha512",
+    "C:\\Users\\ewyro\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\ewyro\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

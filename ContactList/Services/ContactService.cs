@@ -10,12 +10,13 @@ namespace ContactList.Services;
 public class ContactService : IContactService
 {
     public List<Contact> _contacts = new List<Contact>();
+    FileService _fileService = new FileService();
 
         public bool CreateContact(Contact contact)
         {
           try
           {
-            var content = FileService.ReadFromFile();
+            var content = _fileService.ReadFromFile();
 
                 //Omvandlar listan från json-format til C#
                 _contacts = JsonConvert.DeserializeObject<List<Contact>>(content)!;
@@ -24,7 +25,7 @@ public class ContactService : IContactService
             {
                 _contacts.Add(contact);
 
-                FileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
+                _fileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
 
                 return true;
             }
@@ -44,7 +45,7 @@ public class ContactService : IContactService
 
           _contacts.Remove(contact);
 
-            FileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
+            _fileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
             return true;
         }
         catch { }
@@ -53,7 +54,7 @@ public class ContactService : IContactService
 
     public IEnumerable<Contact> GetAll()
     {
-        var content = FileService.ReadFromFile();
+        var content = _fileService.ReadFromFile();
 
         if (content != string.Empty)
         {
@@ -79,7 +80,7 @@ public class ContactService : IContactService
 
     public Contact GetSpecific(Func<Contact, bool> expression)
     {
-        var content = FileService.ReadFromFile();
+        var content = _fileService.ReadFromFile();
         _contacts = JsonConvert.DeserializeObject<List<Contact>>(content)!;
 
         var contact = _contacts.FirstOrDefault(expression, null!);
@@ -88,7 +89,7 @@ public class ContactService : IContactService
 
     public void UpdateContact()
     {
-        FileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
+        _fileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
 
     }
 }

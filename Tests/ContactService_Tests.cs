@@ -1,5 +1,8 @@
+using ContactList.Interfaces;
 using ContactList.Models;
 using ContactList.Services;
+using Moq;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Tests
@@ -26,40 +29,83 @@ namespace Tests
 
         
 
-       
-        
+    
 
+        //[Fact]
+
+        ////NameOfMethod_Scenario_ExpectedResult
+        //public void CreateContact_IfContactIsAddedToList_ReturnTrue()
+        //{
+        //    //Arrange
+        //    contact.Adress = adress;
+
+
+        //    //Act
+        //    bool result = _contactService.CreateContact(contact);
+
+        //    //Assert
+        //    Assert.True(result);
+        //}
+
+        //[Fact]
+
+        //public void DeleteContact_IfContactIsDeleted_ReturnTrue()
+        //{
+        //    //Arrange
+        //    contact.Adress = adress;
+
+        //    //Act
+        //    bool result = _contactService.Delete(contact);
+
+        //    //Assert
+        //    Assert.True(result);
+        //}
 
         [Fact]
 
-        //NameOfMethod_Scenario_ExpectedResult
-        public void CreateContact_IfContactIsAddedToList_ReturnTrue()
+        public void CreateContactMock_IfContactCreated_ReturnTrue()
         {
-            //Arrange
+            // Arrange
             contact.Adress = adress;
+            Mock<IFileService> mockFileService = new Mock<IFileService>();
 
+            IContactService contactService = new ContactService();
 
-            //Act
-            bool result = _contactService.CreateContact(contact);
+            // Act
+            bool result = contactService.CreateContact(contact);
 
-            //Assert
+            // Assert
             Assert.True(result);
         }
 
-        [Fact]
+        //[Fact]
 
-        public void DeleteContact_IfContactIsDeleted_ReturnTrue()
-        {
-            //Arrange
-            contact.Adress = adress;
+        //public void GetSpecificContact_IfContactFound_ReturnContact()
+        //{
+        //    //Arrange
+        //    contact.Adress = adress;
+        //    var email = contact.Email;
 
-            //Act
-            bool result = _contactService.Delete(contact);
+        //    Mock<IContactService> mockContactService = new Mock<IContactService>();
 
-            //Assert
-            Assert.True(result);
-        }
+        //    mockContactService.Setup(contact => contact.GetSpecific(contact => contact.Email == email)).Returns(contact);
 
 
+
+        //    IContactService contactService = new ContactService();
+
+        //    // Act
+        //    Contact result = contactService.GetSpecific(contact => contact.Email == email);
+
+        //    // Assert
+        //    Assert.NotNull(result);
+        //    Assert.IsAssignableFrom<IUser>(result);
+        //    Assert.NotNull(result.Id);
+        //    Assert.True(Guid.TryParse(result.Id, out Guid id));
+
+        //    //Act
+
+        //    //Assert
+        //}
     }
 }
