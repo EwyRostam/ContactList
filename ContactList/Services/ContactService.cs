@@ -12,33 +12,35 @@ public class ContactService : IContactService
     public List<Contact> _contacts = new List<Contact>();
     private readonly IFileService _fileService;
 
-    public ContactService(IFileService fileService)
+    public ContactService(IFileService fileService) //Constructor with dependency injection that can be used for the moq-test
     {
         _fileService = fileService;
     }
 
 
 
-    public bool CreateContact(Contact contact)
+    public bool CreateContact(Contact contact) 
         {
           try
           {
-            var content = _fileService.ReadFromFile();
+            //Gets list from file and converts it to C# List. So that new list will not overwrite the old list when saved.
+            var content = _fileService.ReadFromFile(); 
+                _contacts = JsonConvert.DeserializeObject<List<Contact>>(content)!; 
 
-                //Omvandlar listan från json-format til C#
-                _contacts = JsonConvert.DeserializeObject<List<Contact>>(content)!;
-                
+            //If contact exists, add contact to list and save down to file.
             if (contact!=null)
             {
                 _contacts.Add(contact);
 
                 _fileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
-
+            
+            //If save to file succeeded
                 return true;
             }
            
         }
         catch { }
+        //If  save to file failed
         return false;
         }
 
@@ -49,24 +51,28 @@ public class ContactService : IContactService
     {
         try
         {
-
+            //Removes contact and saves updated list to file
           _contacts.Remove(contact);
 
             _fileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
+            //If succeded
             return true;
         }
         catch { }
+        //If failed
         return false;
     }
 
     public IEnumerable<Contact> GetAll()
     {
+
         var content = _fileService.ReadFromFile();
 
         if (content != string.Empty)
         {
-            //Omvandlar listan från json-format til C#
+            
             _contacts = JsonConvert.DeserializeObject<List<Contact>>(content)!;
+            //When all contacts are deleted from file "[]" remains in json file. Therefore checking the length of the list.
             if (_contacts.Count > 0)
                 return _contacts;
             else return null!;
@@ -75,7 +81,7 @@ public class ContactService : IContactService
         else
         {
             
-            Console.WriteLine("Kunde inte hitta filen. Vill du ha yoghurt istället?");
+            Console.WriteLine("Could not find the file you are looking for.");
             Console.ReadLine();
             return null!;
             
@@ -87,9 +93,11 @@ public class ContactService : IContactService
 
     public Contact GetSpecific(Func<Contact, bool> expression)
     {
+        //Gets list from file and converts it.
         var content = _fileService.ReadFromFile();
         _contacts = JsonConvert.DeserializeObject<List<Contact>>(content)!;
 
+        //Finds contact in list, the first one that matches expression in ()
         var contact = _contacts.FirstOrDefault(expression, null!);
         return contact;
     }
@@ -98,9 +106,12 @@ public class ContactService : IContactService
     {
         try
         {
+            //Save updated list and convert to json-format.
             _fileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
+            //If succeeded
             return true;
         } catch { }
+        //If failed
         return false;
         
 

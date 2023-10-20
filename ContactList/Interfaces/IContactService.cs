@@ -1,22 +1,22 @@
 ﻿
 
 using ContactList.Models;
-using ContactList.Services;
+
 
 namespace ContactList.Interfaces;
 
 public interface IContactService
 {
     
-        public bool CreateContact(Contact contact);
-        public bool Delete(Contact contact);
+        public bool CreateContact(Contact contact); //Will add contact to list and call the function to save down list to file.
+        public bool Delete(Contact contact); //Will delete contact from list and call function to save down changed list to file.
    
 
-        IEnumerable<Contact> GetAll();
+        IEnumerable<Contact> GetAll(); //Will return an IEnumerable of the contactlist
 
-        public Contact GetSpecific(Func<Contact, bool> expression);
+        public Contact GetSpecific(Func<Contact, bool> expression); //Searches for contact in contactlist and returns contact
 
-    public bool UpdateContact(IFileService _fileService);
+    public bool UpdateContact(IFileService _fileService); //Saves down updated list to file
 
         
 

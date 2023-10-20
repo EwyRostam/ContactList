@@ -28,13 +28,13 @@ internal class MenuService : IMenuService
         do
         {
             Console.Clear();
-            Console.WriteLine("1. Skapa en ny kontakt");
-            Console.WriteLine("2. Visa alla kontakter");
-            Console.WriteLine("3. Visa en specifik kontakt");
-            Console.WriteLine("4. Uppdatera en kontakt");
-            Console.WriteLine("5. Radera en kontakt");
-            Console.WriteLine("0. Avsluta");
-            Console.Write("Välj ett av ovanstående alternativ (0-5): ");
+            Console.WriteLine("1. Create new contact");
+            Console.WriteLine("2. Show all contacts");
+            Console.WriteLine("3. Show details for specific contact");
+            Console.WriteLine("4. Update a contact");
+            Console.WriteLine("5. Delete a contact");
+            Console.WriteLine("0. Close program");
+            Console.Write("Choose one of the above alternatives (0-5): ");
             var option = Console.ReadLine();
             
 
@@ -73,26 +73,26 @@ internal class MenuService : IMenuService
 
     public void CreateMenu()
     {
-        Console.Clear();
-        Console.WriteLine("Lägg till en ny kontakt");
+        Console.Clear(); //Clears field from main menu
+        Console.WriteLine("Add a new contact");
         Console.WriteLine("-----------------------");
 
-        var contact = new Contact();
+        var contact = new Contact(); //Instance of new contact
 
-        Console.Write("Förnamn: ");
-        string firstName = Console.ReadLine()!.Trim().ToLower();
+        Console.Write("First name: ");
+        string firstName = Console.ReadLine()!.Trim().ToLower(); 
         if (firstName.Length > 0)
-            contact.FirstName = char.ToUpper(firstName[0]) + firstName.Substring(1);
+            contact.FirstName = char.ToUpper(firstName[0]) + firstName.Substring(1); //Makes first letter big if the name is longes than one letter
 
-        Console.Write("Efternamn: ");
+        Console.Write("Surname: ");
         string lastName = Console.ReadLine()!.Trim().ToLower();
         if (lastName.Length > 0)
             contact.LastName = char.ToUpper(lastName[0]) + lastName.Substring(1);
 
-        Console.Write("E-post: ");
+        Console.Write("Email: ");
         contact.Email = Console.ReadLine()!.Trim().ToLower();
 
-        Console.Write("Telefonnummer: ");
+        Console.Write("Phone number: ");
         contact.PhoneNumber = Console.ReadLine()!.Trim();
 
 
@@ -101,20 +101,20 @@ internal class MenuService : IMenuService
         Console.Clear() ;
         Console.WriteLine("Adress");
         Console.WriteLine("-------------");
-        Console.Write("Gata: ");
+        Console.Write("Street: ");
         contact.Adress.Street = Console.ReadLine();
-        Console.Write("Gatunummer: ");
+        Console.Write("Street number: ");
         contact.Adress.StreetNumber = Console.ReadLine();
-        Console.Write("Stad: ");
+        Console.Write("City: ");
         contact.Adress.City = Console.ReadLine();
-        Console.Write("Postkod: ");
+        Console.Write("Postal code: ");
         contact.Adress.PostalCode = Console.ReadLine();
 
         _contactService.CreateContact(contact);
 
         Console.Clear();
         Console.WriteLine("-----------------------------------------------");
-        Console.WriteLine("Din kontakt har blivit tillagd i kontaktlistan!");
+        Console.WriteLine("Your contact has been added to the contactlist!");
         Console.ReadKey();
 
 
@@ -124,12 +124,12 @@ internal class MenuService : IMenuService
     {
         
         Console.Clear();
-        Console.WriteLine("Visa alla Kontakter");
+        Console.WriteLine("Show all contacts");
         Console.WriteLine("---------------------");
 
         if (_contactService.GetAll() != null)
         {
-            foreach (var contact in _contactService.GetAll())
+            foreach (var contact in _contactService.GetAll()) //Loop for all contacts in list
             {
                 Console.WriteLine($"{contact.FirstName} {contact.LastName} <{contact.Email}> {contact.PhoneNumber} {contact.Adress.FullAdress}");
                 Console.WriteLine();
@@ -139,9 +139,9 @@ internal class MenuService : IMenuService
         else
         {
             Console.WriteLine("The contactlist is empty. There are no contacts to show.");
-            Thread.Sleep(2000);
+            Thread.Sleep(2000); //Leaves the message for 2 seconds
             Console.Clear();
-            for (var i = 0; i < 20; i++)
+            for (var i = 0; i < 20; i++) //Prints 20 stars one after the other
             {
                 Console.Write("*");
                 Thread.Sleep(125);
@@ -161,7 +161,7 @@ internal class MenuService : IMenuService
         Console.Write("Email: ");
 
         var email = Console.ReadLine()!.Trim().ToLower();
-        var contact = _contactService.GetSpecific(contact => contact.Email == email);
+        var contact = _contactService.GetSpecific(contact => contact.Email == email); //Compares the email with the email with the contacts in the list and returns the first one matching.
 
         if (contact != null)
         {
@@ -186,7 +186,7 @@ internal class MenuService : IMenuService
         {
             var exit = false;
 
-            Contact contact = ListSpecificMenu();
+            Contact contact = ListSpecificMenu(); //Gets a contact from list through "ListSpecificMenu"
 
             if(contact != null ) 
             {
@@ -295,7 +295,7 @@ internal class MenuService : IMenuService
             Console.ReadKey();
             _contactService.Delete(contact);
             Console.Clear();
-            Console.Clear();
+            
 
             for (var i = 0; i < 20; i++)
             {

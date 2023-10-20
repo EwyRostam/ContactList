@@ -11,7 +11,6 @@ namespace Tests
     {
 
         private readonly Mock<IFileService> mockFileService = new Mock<IFileService>();
-        private readonly List<Contact> contacts = new List<Contact>();
         private static readonly IFileService fileService = new FileService();
 
 
