@@ -10,9 +10,16 @@ namespace ContactList.Services;
 public class ContactService : IContactService
 {
     public List<Contact> _contacts = new List<Contact>();
-    FileService _fileService = new FileService();
+    private readonly IFileService _fileService;
 
-        public bool CreateContact(Contact contact)
+    public ContactService(IFileService fileService)
+    {
+        _fileService = fileService;
+    }
+
+
+
+    public bool CreateContact(Contact contact)
         {
           try
           {
@@ -87,9 +94,15 @@ public class ContactService : IContactService
         return contact;
     }
 
-    public void UpdateContact()
+    public bool UpdateContact(IFileService _fileService)
     {
-        _fileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
+        try
+        {
+            _fileService.SaveToFile(JsonConvert.SerializeObject(_contacts));
+            return true;
+        } catch { }
+        return false;
+        
 
     }
 }

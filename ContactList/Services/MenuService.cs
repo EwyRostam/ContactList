@@ -18,7 +18,9 @@ internal interface IMenuService
 internal class MenuService : IMenuService
 
 { 
-    private readonly IContactService _contactService = new ContactService();
+    
+    private static readonly IFileService _fileService = new FileService();
+    private readonly IContactService _contactService = new ContactService(_fileService);
 
     public void MainMenu()
     {
@@ -262,7 +264,7 @@ internal class MenuService : IMenuService
 
                 } while (exit == false);
 
-                _contactService.UpdateContact();
+                _contactService.UpdateContact(_fileService);
 
             }
 

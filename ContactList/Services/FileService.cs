@@ -6,9 +6,11 @@ namespace ContactList.Services;
 
 public class FileService : IFileService
 {
+
     private static readonly string filePath = @"C:\Users\ewyro\Nackademin\Contactlist\Contacts.json";
 
-  
+
+
     public void SaveToFile(string contentAsJson)
     {
         //Using innebär att lokala variabler raderas när scopet är slut. Och att öppnade filer stängs.

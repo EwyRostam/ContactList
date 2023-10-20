@@ -103,3 +103,8 @@ C:\Users\ewyro\Nackademin\ContactList\Tests\obj\Debug\net7.0\refint\Tests.dll
 C:\Users\ewyro\Nackademin\ContactList\Tests\obj\Debug\net7.0\Tests.pdb
 C:\Users\ewyro\Nackademin\ContactList\Tests\obj\Debug\net7.0\Tests.genruntimeconfig.cache
 C:\Users\ewyro\Nackademin\ContactList\Tests\obj\Debug\net7.0\ref\Tests.dll
+C:\Users\ewyro\Nackademin\ContactList\Tests\bin\Debug\net7.0\Castle.Core.dll
+C:\Users\ewyro\Nackademin\ContactList\Tests\bin\Debug\net7.0\Moq.dll
+C:\Users\ewyro\Nackademin\ContactList\Tests\bin\Debug\net7.0\System.Diagnostics.EventLog.dll
+C:\Users\ewyro\Nackademin\ContactList\Tests\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\ewyro\Nackademin\ContactList\Tests\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.dll

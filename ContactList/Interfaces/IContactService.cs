@@ -1,6 +1,7 @@
 ﻿
 
 using ContactList.Models;
+using ContactList.Services;
 
 namespace ContactList.Interfaces;
 
@@ -15,7 +16,7 @@ public interface IContactService
 
         public Contact GetSpecific(Func<Contact, bool> expression);
 
-    public void UpdateContact();
+    public bool UpdateContact(IFileService _fileService);
 
         
 
